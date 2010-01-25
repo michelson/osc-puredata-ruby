@@ -5,8 +5,14 @@
 #
 # $ ruby heroku-sinatra-app.rb
 #
+# compatible with ruby 1.8, 1.9, and jruby
 require 'rubygems'
+require 'eventmachine'
+require 'osc-ruby'
+require 'osc-ruby/em_server'
 require 'sinatra'
+# @server = OSC::EMServer.new( 3002 )
+
 
 configure :production do
   # Configure stuff here you'll want to
@@ -16,18 +22,38 @@ configure :production do
   #       from ENV['DATABASE_URI'] (see /env route below)
 end
 
+
+
 # Quick test
 get '/' do
   "Congradulations!
    You're running a Sinatra application on Heroku!"
 end
 
-# Test at <appname>.heroku.com
+ get '/env' do
+   ENV.inspect
+ end
 
-# You can see all your app specific information this way.
-# IMPORTANT! This is a very bad thing to do for a production
-# application with sensitive information
 
-# get '/env' do
-#   ENV.inspect
+ get '/v/:num' do
+   num = params[:num] || 20
+   @client = OSC::Client.new( '192.168.0.100', 3002 )
+   @client.send( OSC::Message.new( "/v" , num.to_i  ))
+   " #{num} sended!"
+ end
+ 
+ get '/test/:num' do
+   num = params[:num] || 20
+   @client = OSC::Client.new( '192.168.0.100', 3002 )
+   @client.send( OSC::Message.new( "/test" , num  ))
+   " #{num} sended!"
+ end
+
+# Thread.new do
+#   @server.run
 # end
+
+#@server.add_method '/test' do | message |
+#  puts message.to_a
+#end
+
