@@ -40,7 +40,7 @@ end
      @msg =  message.to_a
    end
    @server.run
-   "#{@msg}"
+   "mensaje : #{@msg}"
  end
 
 
