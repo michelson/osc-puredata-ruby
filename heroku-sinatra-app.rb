@@ -37,14 +37,14 @@ end
 
  get '/v/:num' do
    num = params[:num] || 20
-   @client = OSC::Client.new( '192.168.0.100', 3002 )
+   @client = OSC::Client.new( '190.164.164.193', 3002 )
    @client.send( OSC::Message.new( "/v" , num.to_i  ))
    " #{num} sended!"
  end
  
  get '/test/:num' do
    num = params[:num] || 20
-   @client = OSC::Client.new( '192.168.0.100', 3002 )
+   @client = OSC::Client.new( '190.164.164.193', 3002 )
    @client.send( OSC::Message.new( "/test" , num  ))
    " #{num} sended!"
  end
