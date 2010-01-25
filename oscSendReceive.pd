@@ -1,4 +1,4 @@
-#N canvas 14 61 494 513 10;
+#N canvas 14 61 642 539 10;
 #X declare -lib mrpeach/udpreceive;
 #X declare -lib mrpeach/unpackOSC;
 #X declare -lib mrpeach/routeOSC;
@@ -36,16 +36,16 @@
 #X obj 391 384 s osc_packer;
 #X msg 241 359 send /test \$1;
 #X text 258 51;
-#X msg 400 183 connect 75.101.163.44 3004;
 #X obj 7 128 udpreceive 3002;
 #X msg 297 131 connect localhost 3003;
+#X msg 413 165 connect 75.101.163.44 3003;
 #X connect 3 0 4 0;
 #X connect 3 0 9 0;
 #X connect 4 0 8 0;
 #X connect 6 0 5 0;
 #X connect 9 0 7 0;
 #X connect 9 0 6 0;
-#X connect 13 0 29 0;
+#X connect 13 0 28 0;
 #X connect 16 0 19 0;
 #X connect 17 0 18 0;
 #X connect 18 0 19 0;
@@ -53,5 +53,6 @@
 #X connect 22 0 23 0;
 #X connect 23 0 24 0;
 #X connect 25 0 21 0;
-#X connect 28 0 3 0;
+#X connect 27 0 3 0;
+#X connect 28 0 19 0;
 #X connect 29 0 19 0;
