@@ -3,5 +3,10 @@
 **NOTE** 
 patch for pd included oscSendReceive.pd
 
+ready for heroku (almost)
+
+**bugs**
+the @server.run breaks the app at the second request
+
 
 
