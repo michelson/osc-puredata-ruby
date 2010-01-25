@@ -1,0 +1,57 @@
+#N canvas 14 61 494 513 10;
+#X declare -lib mrpeach/udpreceive;
+#X declare -lib mrpeach/unpackOSC;
+#X declare -lib mrpeach/routeOSC;
+#X declare -lib mrpeach;
+#X declare -lib mrpeach/udpsend;
+#X declare -lib mrpeach/packOSC;
+#X obj 4 38 import mrpeach/udpreceive;
+#X obj 4 68 import mrpeach/unpackOSC;
+#X obj 5 96 import mrpeach/routeOSC;
+#X obj 7 163 unpackOSC;
+#X obj 82 199 routeOSC /test;
+#X obj 7 299 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 2000 1;
+#X floatatom 7 271 5 0 0 0 - - -;
+#X obj 45 271 print /v;
+#X obj 121 270 print /test;
+#X obj 7 199 routeOSC /v;
+#X obj 4 14 import mrpeach;
+#X text 85 162 RECEIVE PART;
+#X obj 202 11 cnv 15 300 460 empty empty SEND_PART 20 12 0 14 -4032
+-66577 0;
+#X obj 295 107 loadbang;
+#X obj 353 50 import mrpeach/udpsend;
+#X obj 355 73 import mrpeach/packOSC;
+#X msg 223 131 disconnect;
+#X obj 310 155 r osc_packer;
+#X obj 310 183 packOSC;
+#X obj 295 216 udpsend;
+#X obj 244 283 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 5700 1;
+#X obj 241 384 s osc_packer;
+#X obj 391 224 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 6000 1;
+#X msg 391 360 send /test/v \$1;
+#X obj 391 384 s osc_packer;
+#X msg 241 359 send /test \$1;
+#X text 258 51;
+#X msg 400 183 connect 75.101.163.44 3004;
+#X obj 7 128 udpreceive 3002;
+#X msg 297 131 connect localhost 3003;
+#X connect 3 0 4 0;
+#X connect 3 0 9 0;
+#X connect 4 0 8 0;
+#X connect 6 0 5 0;
+#X connect 9 0 7 0;
+#X connect 9 0 6 0;
+#X connect 13 0 29 0;
+#X connect 16 0 19 0;
+#X connect 17 0 18 0;
+#X connect 18 0 19 0;
+#X connect 20 0 25 0;
+#X connect 22 0 23 0;
+#X connect 23 0 24 0;
+#X connect 25 0 21 0;
+#X connect 28 0 3 0;
+#X connect 29 0 19 0;
