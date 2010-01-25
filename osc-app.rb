@@ -42,9 +42,10 @@ end
      puts message.to_a
    end
 
-  # Thread.new do
+   Thread.new do
      @server.run
-  # end
+   end
+   
  end
 
 
