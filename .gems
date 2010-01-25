@@ -1,2 +1,2 @@
 osc-ruby
-eventmachine
+eventmachine --version 0.12.10
