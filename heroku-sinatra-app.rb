@@ -37,7 +37,7 @@ end
  get '/receive' do 
    @server = OSC::EMServer.new( 3004 )
    @server.add_method '/test' do | message |
-     @msg message.to_a
+     @msg =  message.to_a
    end
    @server.run
    "#{@msg}"
