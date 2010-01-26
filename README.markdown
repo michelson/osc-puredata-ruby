@@ -3,7 +3,10 @@
 **NOTE** 
 patch for pd included oscSendReceive.pd
 
-ready for heroku (almost)
+ready for heroku (only send)
+
+  # ruby daemon.rb for listen
+
 
 **bugs**
 the @server.run breaks the app at the second request
