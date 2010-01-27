@@ -34,7 +34,7 @@ end
 
  post '/arg' do
    # pd path listen /test and /test/v
-   protected!
+   #protected!
    num = params[:num] || 20
    port = params[:port] || 3002
    ip = params[:ip] || '190.164.164.193'
