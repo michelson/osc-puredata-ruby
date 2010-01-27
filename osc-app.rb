@@ -1,26 +1,5 @@
-# You'll need to require these if you
-# want to develop while running with ruby.
-# The config/rackup.ru requires these as well
-# for it's own reasons.
-#
-# $ ruby heroku-sinatra-app.rb
-#
-# compatible with ruby 1.8, 1.9, and jruby
-require 'rubygems'
-require 'eventmachine'
-require 'osc-ruby'
-require 'osc-ruby/em_server'
-require 'sinatra'
-# @server = OSC::EMServer.new( 3002 )
-
-
-configure :production do
-  # Configure stuff here you'll want to
-  # only be run at Heroku at boot
-
-  # TIP:  You can get you database information
-  #       from ENV['DATABASE_URI'] (see /env route below)
-end
+require 'initializer'
+require 'helpers'
 
 
 
@@ -39,7 +18,7 @@ end
    @client = OSC::Client.new( 'localhost', 3002 )
 
    @server.add_method '/test' do | message |
-     puts message.to_a
+     puts message.inspect
    end
 
    Thread.new do
@@ -48,26 +27,28 @@ end
    
  end
 
+ get '/send' do 
+   protected!
+   erb :send
+ end
 
- get '/v/:num' do
+ post '/arg' do
+   # pd path listen /test and /test/v
+   protected!
    num = params[:num] || 20
-   @client = OSC::Client.new( '190.164.164.193', 3002 )
-   @client.send( OSC::Message.new( "/v" , num.to_i  ))
-   " #{num} sended!"
+   port = params[:port] || 3002
+   ip = params[:ip] || '190.164.164.193'
+   path = params[:path] || '/v'
+   
+   @client = OSC::Client.new( ip, port )
+   @client.send( OSC::Message.new( path , num.to_i  ))
+   
+  # session[:message] = "<div class='block'> #{num} sended!</div>"
+  # redirect '/send'
+   
  end
  
- get '/test/:num' do
-   num = params[:num] || 20
-   @client = OSC::Client.new( '190.164.164.193', 3002 )
-   @client.send( OSC::Message.new( "/test" , num  ))
-   " #{num} sended!"
+ get '/demo' do 
+    erb :demo
  end
-
-# Thread.new do
-#   @server.run
-# end
-
-#@server.add_method '/test' do | message |
-#  puts message.to_a
-#end
 

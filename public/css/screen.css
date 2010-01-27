@@ -1,0 +1,488 @@
+/* -------------------------------------------------------------- 
+  
+   reset.css
+   * Resets default browser CSS.
+   
+-------------------------------------------------------------- */
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, code,
+del, dfn, em, img, q, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+body { 
+	color:#000000;
+	font-family:'lucida grande','lucida sans unicade',sans-serif;
+	font-size:100%;
+	line-height:1.3;
+}
+
+/* Tables still need 'cellspacing="0"' in the markup. */
+table { border-collapse: separate; border-spacing: 0; }
+caption, th, td { text-align: left; font-weight: normal; }
+table, td, th { vertical-align: middle; }
+
+/* Remove possible quote marks (") from <q>, <blockquote>. */
+blockquote:before, blockquote:after, q:before, q:after { content: ""; }
+blockquote, q { quotes: "" ""; }
+
+/* Remove annoying border on linked images. */
+a img { border: none; }
+/* -------------------------------------------------------------- 
+
+   typography.css
+   * Sets up some sensible default typography.
+   
+-------------------------------------------------------------- */
+
+/* Default font settings. 
+   The font-size percentage is of 16px. (0.75 * 16px = 12px) */
+html { font-size:100.01%; }
+body { 
+ /* font-size: 75%;
+  color: #222; 
+  background: #fff;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; */
+}
+
+.block {
+	background:#F4F5F5 none repeat scroll 0 0;
+	border:2px solid #D5D0D2;
+	color:#222222;
+	font-size:0.85em;
+	line-height:1.15;
+	padding:0.5em;
+}
+
+
+/* Headings
+-------------------------------------------------------------- */
+
+h1,h2,h3,h4,h5,h6 { font-weight: normal; color: #111; }
+
+h1 { font-size: 3em; line-height: 1; margin-bottom: 0.5em; }
+h2 { font-size: 2em; margin-bottom: 0.75em; }
+h3 { font-size: 1.5em; line-height: 1; margin-bottom: 1em; }
+h4 { font-size: 1.2em; line-height: 1.25; margin-bottom: 1.25em; }
+h5 { font-size: 1em; font-weight: bold; margin-bottom: 1.5em; }
+h6 { font-size: 1em; font-weight: bold; }
+
+h1 img, h2 img, h3 img, 
+h4 img, h5 img, h6 img {
+  margin: 0;
+}
+
+
+/* Text elements
+-------------------------------------------------------------- */
+
+p           { margin: 0 0 1.5em; }
+p img.left  { float: left; margin: 1.5em 1.5em 1.5em 0; padding: 0; }
+p img.right { float: right; margin: 1.5em 0 1.5em 1.5em; }
+
+a:focus, 
+a:hover     { color: #000; }
+a           { color: #009; text-decoration: underline; }
+
+blockquote  { margin: 1.5em; color: #666; font-style: italic; }
+strong      { font-weight: bold; }
+em,dfn      { font-style: italic; }
+dfn         { font-weight: bold; }
+sup, sub    { line-height: 0; }
+
+abbr, 
+acronym     { border-bottom: 1px dotted #666; }
+address     { margin: 0 0 1.5em; font-style: italic; }
+del         { color:#666; }
+
+pre 				{ margin: 1.5em 0; white-space: pre; }
+pre,code,tt { font: 1em 'andale mono', 'lucida console', monospace; line-height: 1.5; }
+
+
+/* Lists
+-------------------------------------------------------------- */
+
+li ul, 
+li ol       { margin:0 1.5em; }
+ul, ol      { margin: 0 1.5em 1.5em 1.5em; }
+
+ul          { list-style-type: disc; }
+ol          { list-style-type: decimal; }
+
+dl          { margin: 0 0 1.5em 0; }
+dl dt       { font-weight: bold; }
+dd          { margin-left: 1.5em;}
+
+
+/* Tables
+-------------------------------------------------------------- */
+
+table       { margin-bottom: 1.4em; width:100%; }
+th          { font-weight: bold; }
+thead th 		{ background: #c3d9ff; }
+th,td,caption { padding: 4px 10px 4px 5px; }
+tr.even td  { background: #e5ecf9; }
+tfoot       { font-style: italic; }
+caption     { background: #eee; }
+
+
+/* Misc classes
+-------------------------------------------------------------- */
+
+.small      { font-size: .8em; margin-bottom: 1.875em; line-height: 1.875em; }
+.large      { font-size: 1.2em; line-height: 2.5em; margin-bottom: 1.25em; }
+.hide       { display: none; }
+
+.quiet      { color: #666; }
+.loud       { color: #000; }
+.highlight  { background:#ff0; }
+.added      { background:#060; color: #fff; }
+.removed    { background:#900; color: #fff; }
+
+.first      { margin-left:0; padding-left:0; }
+.last       { margin-right:0; padding-right:0; }
+.top        { margin-top:0; padding-top:0; }
+.bottom     { margin-bottom:0; padding-bottom:0; }
+/* --------------------------------------------------------------
+   grid.css - mirror version of src/grid.css
+-------------------------------------------------------------- */
+
+/* A container should group all your columns. */
+.container {
+  width: 980px;
+  margin: 0 auto;
+	color:#333333;
+	font-size:1.1em;
+}
+
+/* Use this class on any div.span / container to see the grid. */
+.showgrid { 
+  background: url(grid.png); 
+}
+
+
+/* Columns
+-------------------------------------------------------------- */
+
+/* Sets up basic grid floating and margin. */
+.column, div.span-1, div.span-2, div.span-3, div.span-4, div.span-5, div.span-6, div.span-7, div.span-8, div.span-9, div.span-10, div.span-11, div.span-12, div.span-13, div.span-14, div.span-15, div.span-16, div.span-17, div.span-18, div.span-19, div.span-20, div.span-21, div.span-22, div.span-23, div.span-24 {
+  float: left;
+  margin-right: 4px;
+}
+
+/* The last column in a row needs this class. */
+.last, div.last { margin-right: 0; }
+
+/* Use these classes to set the width of a column. */
+.span-1  { width: 37px; }
+.span-2  { width: 78px; }
+.span-3  { width: 119px; }
+.span-4  { width: 160px; }
+.span-5  { width: 201px; }
+.span-6  { width: 242px; }
+.span-7  { width: 283px; }
+.span-8  { width: 324px; }
+.span-9  { width: 365px; }
+.span-10  { width: 406px; }
+.span-11  { width: 447px; }
+.span-12  { width: 488px; }
+.span-13  { width: 529px; }
+.span-14  { width: 570px; }
+.span-15  { width: 611px; }
+.span-16  { width: 652px; }
+.span-17  { width: 693px; }
+.span-18  { width: 734px; }
+.span-19  { width: 775px; }
+.span-20  { width: 816px; }
+.span-21  { width: 857px; }
+.span-22  { width: 898px; }
+.span-23  { width: 939px; }
+.span-24  { width: 980px; margin-right: 0; }
+
+/* Use these classes to set the width of an input. */
+input.span-1, textarea.span-1, input.span-2, textarea.span-2, input.span-3, textarea.span-3, input.span-4, textarea.span-4, input.span-5, textarea.span-5, input.span-6, textarea.span-6, input.span-7, textarea.span-7, input.span-8, textarea.span-8, input.span-9, textarea.span-9, input.span-10, textarea.span-10, input.span-11, textarea.span-11, input.span-12, textarea.span-12, input.span-13, textarea.span-13, input.span-14, textarea.span-14, input.span-15, textarea.span-15, input.span-16, textarea.span-16, input.span-17, textarea.span-17, input.span-18, textarea.span-18, input.span-19, textarea.span-19, input.span-20, textarea.span-20, input.span-21, textarea.span-21, input.span-22, textarea.span-22, input.span-23, textarea.span-23, input.span-24, textarea.span-24 {
+  border-left-width: 1px!important;
+  border-right-width: 1px!important;
+  padding-left: 5px!important;
+  padding-right: 5px!important;
+}
+
+input.span-1, textarea.span-1 { width: 25px!important; }
+input.span-2, textarea.span-2 { width: 66px!important; }
+input.span-3, textarea.span-3 { width: 107px!important; }
+input.span-4, textarea.span-4 { width: 148px!important; }
+input.span-5, textarea.span-5 { width: 189px!important; }
+input.span-6, textarea.span-6 { width: 230px!important; }
+input.span-7, textarea.span-7 { width: 271px!important; }
+input.span-8, textarea.span-8 { width: 312px!important; }
+input.span-9, textarea.span-9 { width: 353px!important; }
+input.span-10, textarea.span-10 { width: 394px!important; }
+input.span-11, textarea.span-11 { width: 435px!important; }
+input.span-12, textarea.span-12 { width: 476px!important; }
+input.span-13, textarea.span-13 { width: 517px!important; }
+input.span-14, textarea.span-14 { width: 558px!important; }
+input.span-15, textarea.span-15 { width: 599px!important; }
+input.span-16, textarea.span-16 { width: 640px!important; }
+input.span-17, textarea.span-17 { width: 681px!important; }
+input.span-18, textarea.span-18 { width: 722px!important; }
+input.span-19, textarea.span-19 { width: 763px!important; }
+input.span-20, textarea.span-20 { width: 804px!important; }
+input.span-21, textarea.span-21 { width: 845px!important; }
+input.span-22, textarea.span-22 { width: 886px!important; }
+input.span-23, textarea.span-23 { width: 927px!important; }
+input.span-24, textarea.span-24 { width: 968px!important; }
+
+/* Add these to a column to append empty cols. */
+
+.append-1  { padding-right: 41px; } 
+.append-2  { padding-right: 82px; } 
+.append-3  { padding-right: 123px; } 
+.append-4  { padding-right: 164px; } 
+.append-5  { padding-right: 205px; } 
+.append-6  { padding-right: 246px; } 
+.append-7  { padding-right: 287px; } 
+.append-8  { padding-right: 328px; } 
+.append-9  { padding-right: 369px; } 
+.append-10  { padding-right: 410px; } 
+.append-11  { padding-right: 451px; } 
+.append-12  { padding-right: 492px; } 
+.append-13  { padding-right: 533px; } 
+.append-14  { padding-right: 574px; } 
+.append-15  { padding-right: 615px; } 
+.append-16  { padding-right: 656px; } 
+.append-17  { padding-right: 697px; } 
+.append-18  { padding-right: 738px; } 
+.append-19  { padding-right: 779px; } 
+.append-20  { padding-right: 820px; } 
+.append-21  { padding-right: 861px; } 
+.append-22  { padding-right: 902px; } 
+.append-23  { padding-right: 943px; } 
+
+/* Add these to a column to prepend empty cols. */
+
+.prepend-1  { padding-left: 41px; } 
+.prepend-2  { padding-left: 82px; } 
+.prepend-3  { padding-left: 123px; } 
+.prepend-4  { padding-left: 164px; } 
+.prepend-5  { padding-left: 205px; } 
+.prepend-6  { padding-left: 246px; } 
+.prepend-7  { padding-left: 287px; } 
+.prepend-8  { padding-left: 328px; } 
+.prepend-9  { padding-left: 369px; } 
+.prepend-10  { padding-left: 410px; } 
+.prepend-11  { padding-left: 451px; } 
+.prepend-12  { padding-left: 492px; } 
+.prepend-13  { padding-left: 533px; } 
+.prepend-14  { padding-left: 574px; } 
+.prepend-15  { padding-left: 615px; } 
+.prepend-16  { padding-left: 656px; } 
+.prepend-17  { padding-left: 697px; } 
+.prepend-18  { padding-left: 738px; } 
+.prepend-19  { padding-left: 779px; } 
+.prepend-20  { padding-left: 820px; } 
+.prepend-21  { padding-left: 861px; } 
+.prepend-22  { padding-left: 902px; } 
+.prepend-23  { padding-left: 943px; } 
+
+
+/* Border on right hand side of a column. */
+div.border {
+  padding-right: 1px;
+  margin-right: 2px;
+  border-right: 1px solid #eee;
+}
+
+/* Border with more whitespace, spans one column. */
+div.colborder {
+  padding-right: 21px;
+  margin-right: 23px;
+  border-right: 1px solid #eee;
+}
+
+
+/* Use these classes on an element to push it into the 
+next column, or to pull it into the previous column.  */
+
+.pull-1 { margin-left: -41px; }
+.pull-2 { margin-left: -82px; }
+.pull-3 { margin-left: -123px; }
+.pull-4 { margin-left: -164px; }
+.pull-5 { margin-left: -205px; }
+.pull-6 { margin-left: -246px; }
+.pull-7 { margin-left: -287px; }
+.pull-8 { margin-left: -328px; }
+.pull-9 { margin-left: -369px; }
+.pull-10 { margin-left: -410px; }
+.pull-11 { margin-left: -451px; }
+.pull-12 { margin-left: -492px; }
+.pull-13 { margin-left: -533px; }
+.pull-14 { margin-left: -574px; }
+.pull-15 { margin-left: -615px; }
+.pull-16 { margin-left: -656px; }
+.pull-17 { margin-left: -697px; }
+.pull-18 { margin-left: -738px; }
+.pull-19 { margin-left: -779px; }
+.pull-20 { margin-left: -820px; }
+.pull-21 { margin-left: -861px; }
+.pull-22 { margin-left: -902px; }
+.pull-23 { margin-left: -943px; }
+.pull-24 { margin-left: -984px; }
+
+.pull-1, .pull-2, .pull-3, .pull-4, .pull-5, .pull-6, .pull-7, .pull-8, .pull-9, .pull-10, .pull-11, .pull-12, .pull-13, .pull-14, .pull-15, .pull-16, .pull-17, .pull-18, .pull-19, .pull-20, .pull-21, .pull-22, .pull-23, .pull-24 {float: left; position:relative;}
+
+.push-1 { margin: 0 -41px 1.5em 41px; }
+.push-2 { margin: 0 -82px 1.5em 82px; }
+.push-3 { margin: 0 -123px 1.5em 123px; }
+.push-4 { margin: 0 -164px 1.5em 164px; }
+.push-5 { margin: 0 -205px 1.5em 205px; }
+.push-6 { margin: 0 -246px 1.5em 246px; }
+.push-7 { margin: 0 -287px 1.5em 287px; }
+.push-8 { margin: 0 -328px 1.5em 328px; }
+.push-9 { margin: 0 -369px 1.5em 369px; }
+.push-10 { margin: 0 -410px 1.5em 410px; }
+.push-11 { margin: 0 -451px 1.5em 451px; }
+.push-12 { margin: 0 -492px 1.5em 492px; }
+.push-13 { margin: 0 -533px 1.5em 533px; }
+.push-14 { margin: 0 -574px 1.5em 574px; }
+.push-15 { margin: 0 -615px 1.5em 615px; }
+.push-16 { margin: 0 -656px 1.5em 656px; }
+.push-17 { margin: 0 -697px 1.5em 697px; }
+.push-18 { margin: 0 -738px 1.5em 738px; }
+.push-19 { margin: 0 -779px 1.5em 779px; }
+.push-20 { margin: 0 -820px 1.5em 820px; }
+.push-21 { margin: 0 -861px 1.5em 861px; }
+.push-22 { margin: 0 -902px 1.5em 902px; }
+.push-23 { margin: 0 -943px 1.5em 943px; }
+.push-24 { margin: 0 -984px 1.5em 984px; }
+
+.push-1, .push-2, .push-3, .push-4, .push-5, .push-6, .push-7, .push-8, .push-9, .push-10, .push-11, .push-12, .push-13, .push-14, .push-15, .push-16, .push-17, .push-18, .push-19, .push-20, .push-21, .push-22, .push-23, .push-24 {float: right; position:relative;}
+
+
+/* Misc classes and elements
+-------------------------------------------------------------- */
+
+/* In case you need to add a gutter above/below an element */
+.prepend-top { 
+  margin-top:1.5em; 
+}
+.append-bottom { 
+  margin-bottom:1.5em; 
+}
+
+/* Use a .box to create a padded box inside a column.  */ 
+.box { 
+  padding: 1.5em; 
+  margin-bottom: 1.5em; 
+}
+
+/* Use this to create a horizontal ruler across a column. */
+hr {
+  background: #ddd; 
+  color: #ddd;
+  clear: both; 
+  float: none; 
+  width: 100%; 
+  height: .1em;
+  margin: 0 0 1.45em;
+  border: none; 
+}
+hr.space {
+  background: #fff;
+  color: #fff;
+}
+
+
+/* Clearing floats without extra markup
+   Based on How To Clear Floats Without Structural Markup by PiE
+   [http://www.positioniseverything.net/easyclearing.html] */
+
+.clearfix:after, .container:after {
+  content: "\0020"; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden;
+  overflow:hidden; 
+}
+.clearfix, .container {display: block;}
+
+/* Regular clearing
+   apply to column that should drop below previous ones. */
+
+.clear { clear:both; }
+/* -------------------------------------------------------------- 
+
+   forms.css
+   * Sets up some default styling for forms
+   * Gives you classes to enhance your forms
+   
+   Usage:
+   * For text fields, use class .title or .text
+   * For inline forms, use .inline (even when using columns)
+   
+-------------------------------------------------------------- */
+
+label       { font-weight: bold; }
+fieldset    { padding:1.4em; margin: 0 0 1.5em 0; border: 1px solid #ccc; }
+legend      { font-weight: bold; font-size:1.2em; }
+
+
+/* Form fields
+-------------------------------------------------------------- */
+
+input[type=text], input[type=password],
+input.text, input.title, 
+textarea, select { 
+  background-color:#fff; 
+  border:1px solid #bbb; 
+}
+input[type=text]:focus, input[type=password]:focus, 
+input.text:focus, input.title:focus, 
+textarea:focus, select:focus { 
+  border-color:#666; 
+}
+
+input[type=text], input[type=password],
+input.text, input.title,
+textarea, select {
+  margin:0.5em 0;
+}
+
+input.text, 
+input.title   { width: 300px; padding:5px; }
+input.title   { font-size:1.5em; }
+textarea      { width: 390px; height: 250px; padding:5px; }
+
+input[type=checkbox], input[type=radio], 
+input.checkbox, input.radio { 
+  position:relative; top:.25em; 
+}
+
+form.inline { line-height:3; }
+form.inline p { margin-bottom:0; }
+
+
+/* Success, notice and error boxes
+-------------------------------------------------------------- */
+
+.error,
+.notice, 
+.success    { padding: .8em; margin-bottom: 1em; border: 2px solid #ddd; }
+
+.error      { background: #FBE3E4; color: #8a1f11; border-color: #FBC2C4; }
+.notice     { background: #FFF6BF; color: #514721; border-color: #FFD324; }
+.success    { background: #E6EFC2; color: #264409; border-color: #C6D880; }
+.error a    { color: #8a1f11; }
+.notice a   { color: #514721; }
+.success a  { color: #264409; }
