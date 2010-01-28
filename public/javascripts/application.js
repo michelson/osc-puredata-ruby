@@ -1,11 +1,10 @@
-function refreshSwatch(obj) {
-	val = $(obj).slider("value");
+function refreshSwatch() {
+	val = $("#master").slider("value");
 	$.ajax({
 	  type: 'POST',
 	  url: '/arg',
-	  data: { path: "/v", ip: "190.164.164.193" , port: "3002" , num: val  },
+	  data: { path: "/master",  ip: $('#ip').val() , port: $('#port').val() , num: val  },
 	  success: console.log("success , hex sended"+ val)
-	 // dataType: dataType
 	});
 	
 }
@@ -39,6 +38,7 @@ jQuery(document).ready(function(){
 		$("#master").slider({
 			value: 60,
 			orientation: "horizontal",
+			change: refreshSwatch,
 			slide: console.log("master changed!")
 		});
 	
@@ -50,8 +50,9 @@ jQuery(document).ready(function(){
 			$(this).slider({
 				value: value,
 				slide: function(event, ui) {$.ajax({type: 'POST', url: '/arg',
-				  data: { path: "/v", ip: $('#ip').val() , port: "3002" , num: ui.value },
-				  success: console.log("success , hex sended"+ ui.value )})
+				  data: { path: "/"+$(this).attr("path"), ip: $('#ip').val() , port: $('#port').val() , num: ui.value },
+				 // success: console.log("success ,  sended"+ ui.value )
+				})
 				}
 			})
 		});
