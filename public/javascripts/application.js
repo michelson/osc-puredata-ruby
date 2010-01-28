@@ -50,7 +50,7 @@ jQuery(document).ready(function(){
 			$(this).slider({
 				value: value,
 				slide: function(event, ui) {$.ajax({type: 'POST', url: '/arg',
-				  data: { path: "/v", ip: "190.164.164.193" , port: "3002" , num: ui.value },
+				  data: { path: "/v", ip: $('#ip').val() , port: "3002" , num: ui.value },
 				  success: console.log("success , hex sended"+ ui.value )})
 				}
 			})
