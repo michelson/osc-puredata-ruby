@@ -25,34 +25,36 @@ $(function() {
 		$("#amount").val($("#slider-vertical").slider("value"));
 });
 */
-
-$(function() {
-	// change defaults for range, animate and orientation
-	$.extend($.ui.slider.defaults, {
-		range: "min",
-		animate: true,
-		min: 0,
-		max: 127,
-		orientation: "vertical"
-	});
-	// setup master volume
-	$("#master").slider({
-		value: 60,
-		orientation: "horizontal",
-		slide: console.log("master changed!")
-	});
+jQuery(document).ready(function(){
+	$(function() {
+		// change defaults for range, animate and orientation
+		$.extend($.ui.slider.defaults, {
+			range: "min",
+			animate: true,
+			min: 0,
+			max: 127,
+			orientation: "vertical"
+		});
+		// setup master volume
+		$("#master").slider({
+			value: 60,
+			orientation: "horizontal",
+			slide: console.log("master changed!")
+		});
 	
-	// setup graphic EQ
-	$("#eq > span").each(function() {
-		// read initial values from markup and remove that
-		var value = parseInt($(this).text());
-		$(this).empty();
-		$(this).slider({
-			value: value,
-			slide: function(event, ui) {$.ajax({type: 'POST', url: '/arg',
-			  data: { path: "/v", ip: "190.164.164.193" , port: "3002" , num: ui.value },
-			  success: console.log("success , hex sended"+ ui.value )})
-			}
-		})
+		// setup graphic EQ
+		$("#eq > span").each(function() {
+			// read initial values from markup and remove that
+			var value = parseInt($(this).text());
+			$(this).empty();
+			$(this).slider({
+				value: value,
+				slide: function(event, ui) {$.ajax({type: 'POST', url: '/arg',
+				  data: { path: "/v", ip: "190.164.164.193" , port: "3002" , num: ui.value },
+				  success: console.log("success , hex sended"+ ui.value )})
+				}
+			})
+		});
 	});
 });
+
