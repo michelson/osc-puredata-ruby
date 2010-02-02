@@ -3,7 +3,7 @@ function refreshSwatch(obj) {
 	$.ajax({
 	  type: 'POST',
 	  url: '/arg',
-	  data: { path: "/v", ip: "190.164.164.193" , port: "3002" , num: val  },
+	  data: { path: "/v", ip: "localhost" , port: "3002" , num: val  },
 	  success: console.log("success , hex sended"+ val)
 	 // dataType: dataType
 	});
@@ -25,7 +25,7 @@ $(function() {
 		$("#amount").val($("#slider-vertical").slider("value"));
 });
 */
-
+jQuery(document).ready(
 $(function() {
 	// change defaults for range, animate and orientation
 	$.extend($.ui.slider.defaults, {
@@ -48,11 +48,15 @@ $(function() {
 		var value = parseInt($(this).text());
 		$(this).empty();
 		$(this).slider({
-			value: value,
+		//	value: value,
+		min:-1,
+		max:1,
+		step:0.1,	
 			slide: function(event, ui) {$.ajax({type: 'POST', url: '/arg',
-			  data: { path: "/v", ip: "190.164.164.193" , port: "3002" , num: ui.value },
+			  data: { path: "/v", ip: "localhost" , port: "3002" , num: ui.value },
 			  success: console.log("success , hex sended"+ ui.value )})
 			}
 		})
 	});
-});
+})
+);
