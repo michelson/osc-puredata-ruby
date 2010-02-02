@@ -8,22 +8,31 @@ function refreshSwatch() {
 	});
 	
 }
-/*
-$(function() {
-		$("#slider-vertical").slider({
-			orientation: "vertical",
-			range: "min",
-			min: 0,
-			max: 100,
-			value: 60,
-			change: refreshSwatch,
-			slide: function(event, ui) {
-				$("#amount").val(ui.value);
+
+function init_eq(){
+	// setup graphic EQ
+	$("#eq > span").each(function() {
+		// read initial values from markup and remove that
+		var value = 0;
+		$(this).html();
+	
+		console.log ('min' + parseInt($(this).attr("min")));
+		console.log ('max' + parseInt($(this).attr("max")));
+		console.log ('step' + parseFloat($(this).attr("step")));
+	
+		$(this).slider({
+			min: parseInt($(this).attr("min")),
+			max: parseInt($(this).attr("max")),
+			step: parseFloat($(this).attr("step")),
+			// change solo al soltar la wea, "slide" al desplazar (eso es mas intensivo)
+			change: function(event, ui) {$.ajax({type: 'POST', url: '/arg',
+			  data: { path: "/"+$(this).attr("path"), ip: $('#ip').val() , port: $('#port').val() , num: ui.value },
+			})
 			}
-		});
-		$("#amount").val($("#slider-vertical").slider("value"));
-});
-*/
+		})
+	});
+}
+
 jQuery(document).ready(function(){
 	$(function() {
 		// change defaults for range, animate and orientation
@@ -42,20 +51,8 @@ jQuery(document).ready(function(){
 			slide: console.log("master changed!")
 		});
 	
-		// setup graphic EQ
-		$("#eq > span").each(function() {
-			// read initial values from markup and remove that
-			var value = parseInt($(this).text());
-			$(this).empty();
-			$(this).slider({
-				value: value,
-				slide: function(event, ui) {$.ajax({type: 'POST', url: '/arg',
-				  data: { path: "/"+$(this).attr("path"), ip: $('#ip').val() , port: $('#port').val() , num: ui.value },
-				 // success: console.log("success ,  sended"+ ui.value )
-				})
-				}
-			})
-		});
+		init_eq();
+	
 	});
 });
 

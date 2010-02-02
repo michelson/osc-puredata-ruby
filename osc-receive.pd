@@ -1,0 +1,90 @@
+#N canvas 54 22 786 652 10;
+#X declare -lib mrpeach/udpreceive;
+#X declare -lib mrpeach/unpackOSC;
+#X declare -lib mrpeach/routeOSC;
+#X declare -lib mrpeach;
+#X declare -path ../pd;
+#X declare -path ../../pd;
+#X obj 26 269 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -260097
+-1 -1 0 1;
+#X floatatom 9 238 5 0 0 0 - - -;
+#X obj 9 267 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 64 269 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 47 238 5 0 0 0 - - -;
+#X obj 47 267 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 102 270 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 85 239 5 0 0 0 - - -;
+#X obj 85 268 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 142 270 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 125 239 5 0 0 0 - - -;
+#X obj 125 268 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 182 270 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 165 239 5 0 0 0 - - -;
+#X obj 165 268 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 222 271 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 205 240 5 0 0 0 - - -;
+#X obj 205 269 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 264 271 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 247 240 5 0 0 0 - - -;
+#X obj 247 269 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 292 242 5 0 0 0 - - -;
+#X obj 292 270 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 26 412 hsl 400 40 0 127 0 0 empty empty empty -2 -8 0 10 -4034
+-1 -1 36502 1;
+#X obj 9 211 routeOSC /eq-1 /eq-2 /eq-3 /eq-4 /eq-5 /eq-6 /eq-7 /master
+;
+#X obj 9 187 unpackOSC;
+#X obj 9 161 udpreceive 3002;
+#X obj 5 39 import mrpeach/udpreceive;
+#X obj 4 68 import mrpeach/unpackOSC;
+#X obj 5 96 import mrpeach/routeOSC;
+#X obj 4 14 import mrpeach;
+#X obj 424 182 synth-machine;
+#X obj 451 368 simple_sampler;
+#X msg 760 530 \; pd dsp \$1;
+#X obj 357 241 print;
+#X connect 0 0 31 0;
+#X connect 1 0 0 0;
+#X connect 1 0 2 0;
+#X connect 4 0 3 0;
+#X connect 4 0 5 0;
+#X connect 4 0 32 0;
+#X connect 7 0 6 0;
+#X connect 7 0 8 0;
+#X connect 7 0 32 1;
+#X connect 10 0 9 0;
+#X connect 10 0 11 0;
+#X connect 10 0 32 2;
+#X connect 13 0 12 0;
+#X connect 13 0 14 0;
+#X connect 16 0 15 0;
+#X connect 16 0 17 0;
+#X connect 19 0 18 0;
+#X connect 19 0 20 0;
+#X connect 21 0 22 0;
+#X connect 21 0 23 0;
+#X connect 24 0 1 0;
+#X connect 24 1 4 0;
+#X connect 24 2 7 0;
+#X connect 24 3 10 0;
+#X connect 24 4 13 0;
+#X connect 24 5 16 0;
+#X connect 24 6 19 0;
+#X connect 24 7 21 0;
+#X connect 24 8 34 0;
+#X connect 25 0 24 0;
+#X connect 26 0 25 0;

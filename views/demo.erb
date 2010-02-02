@@ -4,33 +4,180 @@
 			height:120px; float:left; margin:15px
 		}
 	</style>
-<div class="demo">
-
+<div class="demo span-16">
 <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
 <span class="ui-icon ui-icon-volume-on" style="float:left; margin:-2px 5px 0 0;"></span>
 Master volume
 </p>
-
 <div id="master" style="width:260px; margin:15px;"></div>
-
 <p class="ui-state-default ui-corner-all" style="padding:4px;margin-top:4em;">
 <span class="ui-icon ui-icon-signal" style="float:left; margin:-2px 5px 0 0;"></span>
 Graphic EQ
 </p>
-
+<button id="create-slider" class="ui-button ui-state-default ui-corner-all">Create slider</button>
 
 <div id="eq">
-	<span path="eq-1">88</span>
-	<span path="eq-2">77</span>
-	<span path="eq-3">55</span>
+	<!--><span path="eq-1" min="0" max="127">88</span>
+	<span path="eq-2" min="0" max="127">77</span>
+	<span path="eq-3" min="0" max="1">55</span>
+	<span path="eq-4" min="0" max="1">33</span>
+	<span path="eq-5" min="0" max="1">40</span>
+	<span path="eq-6" min="0" max="1">45</span>
+	<span path="eq-7" min="0" max="1">70</span>-->
+</div>
+<hr/>
+</div><!-- End demo -->
 
-	<span path="eq-4">33</span>
-	<span path="eq-5">40</span>
-	<span path="eq-6">45</span>
-	<span path="eq-7">70</span>
+
+
+
+
+	<script type="text/javascript">
+	$(function() {
+		
+		var name = $("#name"),
+			channel = $("#channel"),
+			min = $("#min"),
+			max = $("#max"),
+			step = $("#step"),
+			allFields = $([]).add(channel).add(min).add(max),
+			tips = $("#validateTips");
+
+		function updateTips(t) {
+			tips.text(t).effect("highlight",{},1500);
+		}
+
+		function checkLength(o,n,min,max) {
+
+			if ( o.val().length > max || o.val().length < min ) {
+				o.addClass('ui-state-error');
+				updateTips("Length of " + n + " must be between "+min+" and "+max+".");
+				return false;
+			} else {
+				return true;
+			}
+
+		}
+
+		function checkRegexp(o,regexp,n) {
+
+			if ( !( regexp.test( o.val() ) ) ) {
+				o.addClass('ui-state-error');
+				updateTips(n);
+				return false;
+			} else {
+				return true;
+			}
+
+		}
+		
+		$("#dialog").dialog({
+			bgiframe: true,
+			autoOpen: false,
+			height: 500,
+			width: 550,
+			modal: true,
+			buttons: {
+				'Create an slider': function() {
+					var bValid = true;
+					allFields.removeClass('ui-state-error');
+
+				/*	bValid = bValid && checkLength(channel,"channel",3,16);
+					bValid = bValid && checkLength(min,"min",6,80);
+					bValid = bValid && checkLength(max,"max",5,16);
+					//bValid = bValid && checkRegexp(password,/^([0-9a-zA-Z])+$/,"Password field only allow : a-z 0-9");
+					bValid = bValid && checkLength(step,"step",5,16);*/
+					
+					if (bValid) {
+						$('#sliders tbody').append('<tr>' +
+							'<td>' + channel.val() + '</td>' + 
+							'<td>' + min.val() + '</td>' + 
+							'<td>' + max.val() + '</td>' +
+							'<td>' + step.val() + '</td>' +
+							'</tr>');
+							var id = $('#eq span').length;
+								$('#eq').append("<span path='eq-10' min='"+min.val()+"' max='"+max.val()+"' step='"+step.val()+"' id='eq-"+id+"'>88</span>");
+							//	create_slider("#eq-"+id, min.val(), max.val() , step.val());
+								init_eq();
+						$(this).dialog('close');
+					}
+				},
+				Cancel: function() {
+					$(this).dialog('close');
+				}
+			},
+			close: function() {
+				allFields.val('').removeClass('ui-state-error');
+			}
+		});
+		
+		
+		
+		$('#create-slider').click(function() {
+			$('#dialog').dialog('open');
+		})
+		.hover(
+			function(){ 
+				$(this).addClass("ui-state-hover"); 
+			},
+			function(){ 
+				$(this).removeClass("ui-state-hover"); 
+			}
+		).mousedown(function(){
+			$(this).addClass("ui-state-active"); 
+		})
+		.mouseup(function(){
+				$(this).removeClass("ui-state-active");
+		});
+
+	});
+	</script>
+
+
+
+<div class="demo span-16 append-bottom">
+
+<div id="dialog" title="Create new slider">
+	<p id="validateTips">All form fields are required.</p>
+	<form>
+	<fieldset>
+		<label for="channel">Channel</label><br/>
+		<input type="text" name="channel" id="channel" class="text ui-widget-content ui-corner-all" /><br/>
+		<label for="max">max</label><br/>
+		<input type="text" name="max" id="max" value="" class="text ui-widget-content ui-corner-all" /><br/>
+		<label for="min">min</label><br/>
+		<input type="text" name="min" id="min" value="" class="text ui-widget-content ui-corner-all" /><br/>
+		<label for="step">Step</label><br/>
+		<input type="text" name="step" id="step" value="" class="text ui-widget-content ui-corner-all" />
+	</fieldset>
+	</form>
+</div>
+
+
+<div id="users-contain" class="ui-widget span-16">
+		<h3>Existing Sliders:</h3>
+	<table id="sliders" class="ui-widget ui-widget-content">
+		<thead>
+			<tr class="ui-widget-header ">
+				<th>Channel</th>
+				<th>Min</th>
+				<th>Max</th>
+				<th>Step</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+			</tr>
+		</tbody>
+	</table>
 </div>
 
 </div><!-- End demo -->
 
+<div class="demo-description">
+<hr/>
+<p>Use a modal dialog to require that the user enter data during a multi-step process.  Embed form markup in the content area, set the <code>modal</code> option to true, and specify primary and secondary user actions with the <code>buttons</code> option.</p>
+
+</div><!-- End demo-description -->
 
 
