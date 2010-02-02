@@ -4,32 +4,70 @@
 			height:120px; float:left; margin:15px
 		}
 	</style>
-<div class="demo">
-
+<div class="demo span-16">
 <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
 <span class="ui-icon ui-icon-volume-on" style="float:left; margin:-2px 5px 0 0;"></span>
 Master volume
 </p>
-
 <div id="master" style="width:260px; margin:15px;"></div>
-
 <p class="ui-state-default ui-corner-all" style="padding:4px;margin-top:4em;">
 <span class="ui-icon ui-icon-signal" style="float:left; margin:-2px 5px 0 0;"></span>
 Graphic EQ
 </p>
+<button id="create-slider" class="ui-button ui-state-default ui-corner-all append-bottom">Create slider</button>
 
 <div id="eq">
-	<span>88</span>
-	<span>77</span>
-	<span>55</span>
-
-	<span>33</span>
-	<span>40</span>
-	<span>45</span>
-	<span>70</span>
+	<!--><span path="eq-1" min="0" max="127">88</span>
+	<span path="eq-2" min="0" max="127">77</span>
+	<span path="eq-3" min="0" max="1">55</span>
+	<span path="eq-4" min="0" max="1">33</span>
+	<span path="eq-5" min="0" max="1">40</span>
+	<span path="eq-6" min="0" max="1">45</span>
+	<span path="eq-7" min="0" max="1">70</span>-->
 </div>
-
+<hr/>
 </div><!-- End demo -->
 
+
+
+<div id="dialog" title="Create new slider">
+	<p id="validateTips">All form fields are required.</p>
+	<form>
+	<fieldset>
+		<label for="channel">Channel</label><br/>
+		<input type="text" name="channel" id="channel" class="text ui-widget-content ui-corner-all" /><br/>
+		<label for="max">max</label><br/>
+		<input type="text" name="max" id="max" value="" class="text ui-widget-content ui-corner-all" /><br/>
+		<label for="min">min</label><br/>
+		<input type="text" name="min" id="min" value="" class="text ui-widget-content ui-corner-all" /><br/>
+		<label for="step">Step</label><br/>
+		<input type="text" name="step" id="step" value="" class="text ui-widget-content ui-corner-all" />
+	</fieldset>
+	</form>
+</div>
+
+
+<div id="users-contain" class="ui-widget span-16" style="display:none">
+	<h3>Existing Sliders:</h3>
+	<table id="sliders" class="ui-widget ui-widget-content">
+		<thead>
+			<tr class="ui-widget-header ">
+				<th>Channel</th>
+				<th>Min</th>
+				<th>Max</th>
+				<th>Step</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div class="demo-description">
+		<p>Use a modal dialog to create your sliders.  options are: <code>channel</code> for osc path, <code>max</code> to set the max slider value, <code>min</code> to set the min slider value, and <code>step</code> the size or amount of each interval or step the slider takes between min and max. to set the full specified value range of the slider (max - min) needs to be evenly divisible by the step.
+			</p>
+</div><!-- End demo-description -->
 
 

@@ -2,14 +2,14 @@
 <body class="ui-widget-content">
 <div class="container">
   <div class="span-24 last">
-		<h1 id="">OSC PURE RUBY</h1>
+		<h1 id="main-title">&Theta;SC PURE RUBY </h1>
 	<% if session[:flash] %>
 		<div class="block"><%= session[:flash]%></div>
 	<% end %>
 	</div>
 	<hr/>
   <div class="clear span-24 last">
-    <div class="span-17 border">
+    <div class="span-17 border append-bottom">
 			<div class="box"><%= yield %></div>
 		</div>
 		<%= erb(:sidebar , :layout=> false )%>
