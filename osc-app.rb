@@ -41,7 +41,7 @@ end
    path = params[:path] || '/v'
    
    @client = OSC::Client.new( ip, port )
-   @client.send( OSC::Message.new( path , num.to_i  ))
+   @client.send( OSC::Message.new( path , num.to_f  ))
    
   # session[:message] = "<div class='block'> #{num} sended!</div>"
   # redirect '/send'

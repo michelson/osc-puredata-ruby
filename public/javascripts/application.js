@@ -9,6 +9,8 @@ function refreshSwatch() {
 	
 }
 
+
+
 function init_eq(){
 	// setup graphic EQ
 	$("#eq > span").each(function() {
@@ -32,6 +34,23 @@ function init_eq(){
 }
 
 jQuery(document).ready(function(){
+
+	DestroyBehave = $.klass({
+		initialize: function(){
+			element = this.element 
+		},
+		onclick: function(){
+			//destroy table row
+			this.element.parent().parent().remove();
+			// destroy slider
+			console.log("vamos a destruir a #"+this.element.attr('destroy'));
+			$("#"+this.element.attr('destroy')).remove();
+			return false;
+		}
+	})
+
+
+
 	$(function() {
 		// change defaults for range, animate and orientation
 		$.extend($.ui.slider.defaults, {
@@ -110,35 +129,37 @@ jQuery(document).ready(function(){
 				bValid = bValid && checkLength(step,"step",5,16);*/
 				
 				if (bValid) {
-					$('#sliders tbody').append('<tr>' +
+					$('#sliders tbody').append('<tr">' +
 						'<td>' + channel.val() + '</td>' + 
 						'<td>' + min.val() + '</td>' + 
 						'<td>' + max.val() + '</td>' +
 						'<td>' + step.val() + '</td>' +
+						'<td>' + '<a href="#" class="destroy" destroy="'+channel.val()+'">destroy!</a>' + '</td>' +
 						'</tr>');
-						var id = $('#eq span').length;
-							$('#eq').append("<span path='"+channel.val()+"' min='"+min.val()+"' max='"+max.val()+"' step='"+step.val()+"' id='eq-"+id+"'></span>");
+						
+							$('#eq').append("<span path='"+channel.val()+"' min='"+min.val()+"' max='"+max.val()+"' step='"+step.val()+"' id='"+channel.val()+"'></span>");
 							init_eq();
 							$(this).dialog('close');
 							// display table
 							$('#users-contain').show();
 				}
 			},
-			Cancel: function() {
+		Cancel: function() {
 				$(this).dialog('close');
-			}
+			 }
 		},
 		close: function() {
 			allFields.val('').removeClass('ui-state-error');
 		}
 	});
 	
+	jQuery(function($) {
+		$('a.destroy').attach(DestroyBehave);
+	});
 	
-	
-	$('#create-slider').click(function() {
+$('#create-slider').click(function() {
 		$('#dialog').dialog('open');
-	})
-	.hover(
+	}).hover(
 		function(){ 
 			$(this).addClass("ui-state-hover"); 
 		},
@@ -152,8 +173,9 @@ jQuery(document).ready(function(){
 			$(this).removeClass("ui-state-active");
 	});
 
-});
-
+ });
 /*end*/
 });
+
+
 

@@ -1,4 +1,4 @@
-#N canvas 202 22 786 652 10;
+#N canvas 36 22 786 652 10;
 #X declare -lib mrpeach/udpreceive;
 #X declare -lib mrpeach/unpackOSC;
 #X declare -lib mrpeach/routeOSC;
@@ -6,17 +6,17 @@
 #X declare -path ../pd;
 #X declare -path ../../pd;
 #X obj 26 269 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -260097
--1 -1 0 1;
+-1 -1 10400 1;
 #X floatatom 9 238 5 0 0 0 - - -;
 #X obj 9 267 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 64 269 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 80 1;
 #X floatatom 47 238 5 0 0 0 - - -;
 #X obj 47 267 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 102 270 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 50 1;
 #X floatatom 85 239 5 0 0 0 - - -;
 #X obj 85 268 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
@@ -44,7 +44,7 @@
 #X obj 292 270 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 26 412 hsl 400 40 0 127 0 0 empty empty empty -2 -8 0 10 -4034
--1 -1 0 1;
+-1 -1 31417 1;
 #X obj 9 211 routeOSC /eq-1 /eq-2 /eq-3 /eq-4 /eq-5 /eq-6 /eq-7 /master
 ;
 #X obj 9 187 unpackOSC;
@@ -60,18 +60,17 @@
 #X connect 0 0 31 0;
 #X connect 1 0 0 0;
 #X connect 1 0 2 0;
+#X connect 1 0 32 0;
 #X connect 4 0 3 0;
 #X connect 4 0 5 0;
-#X connect 4 0 32 0;
+#X connect 4 0 32 1;
 #X connect 7 0 6 0;
 #X connect 7 0 8 0;
-#X connect 7 0 32 1;
+#X connect 7 0 32 2;
 #X connect 10 0 9 0;
 #X connect 10 0 11 0;
-#X connect 10 0 32 2;
 #X connect 13 0 12 0;
 #X connect 13 0 14 0;
-#X connect 13 0 32 3;
 #X connect 16 0 15 0;
 #X connect 16 0 17 0;
 #X connect 19 0 18 0;
