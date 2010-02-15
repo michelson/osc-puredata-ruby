@@ -64,8 +64,8 @@ jQuery(document).ready(function(){
 		$("#master").slider({
 			value: 60,
 			orientation: "horizontal",
-			change: refreshSwatch,
-			slide: console.log("master changed!")
+			change: refreshSwatch //,
+			//slide: console.log("master changed!") // genera errores de ejecucion en firefox
 		});
 	
 		init_eq();
