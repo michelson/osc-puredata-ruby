@@ -1,4 +1,4 @@
-#N canvas -5 22 786 652 10;
+#N canvas 36 22 703 670 10;
 #X declare -lib mrpeach/udpreceive;
 #X declare -lib mrpeach/unpackOSC;
 #X declare -lib mrpeach/routeOSC;
@@ -8,17 +8,17 @@
 #X declare -path ../pd;
 #X declare -path ../../pd;
 #X obj 26 269 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -260097
--1 -1 70 1;
+-1 -1 152 1;
 #X floatatom 9 238 5 0 0 0 - - -;
 #X obj 9 267 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 64 269 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 50 1;
+-1 -1 67 1;
 #X floatatom 47 238 5 0 0 0 - - -;
 #X obj 47 267 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 102 270 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 70 1;
+-1 -1 33 1;
 #X floatatom 85 239 5 0 0 0 - - -;
 #X obj 85 268 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
@@ -45,8 +45,8 @@
 #X floatatom 292 242 5 0 0 0 - - -;
 #X obj 292 270 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 26 412 hsl 400 40 0 127 0 0 empty empty empty -2 -8 0 10 -4034
--1 -1 0 1;
+#X obj 28 433 hsl 400 40 0 127 0 0 empty empty empty -2 -8 0 10 -4034
+-1 -1 14766 1;
 #X obj 9 211 routeOSC /eq-1 /eq-2 /eq-3 /eq-4 /eq-5 /eq-6 /eq-7 /master
 ;
 #X obj 9 187 unpackOSC;
@@ -55,34 +55,19 @@
 #X obj 4 68 import mrpeach/unpackOSC;
 #X obj 5 96 import mrpeach/routeOSC;
 #X obj 4 14 import mrpeach;
-#X obj 24 465 synth-machine;
-#X obj 451 368 simple_sampler;
+#X obj 434 341 simple_sampler;
 #X msg 158 163 \; pd dsp \$1;
 #X obj 357 241 print;
-#X obj 396 131 synth-output;
-#N canvas 388 134 450 300 hola 1;
-#X obj 183 74 inlet;
-#X obj 191 144 outlet;
-#X obj 238 105 * 0.4;
-#X connect 0 0 2 0;
-#X connect 2 0 1 0;
-#X restore 309 82 pd hola;
-#X msg 444 57;
-#X obj 491 58;
-#X floatatom 360 41 5 0 0 0 - - -;
-#X floatatom 316 129 5 0 0 0 - - -;
-#X obj 273 20 knob 32 32 0 127 0 0 empty empty empty 0 -8 0 8 -262144
--1 -1 1100 1;
-#X connect 0 0 31 0;
+#X obj 231 74 synth-output;
 #X connect 1 0 0 0;
 #X connect 1 0 2 0;
-#X connect 1 0 32 0;
+#X connect 1 0 31 0;
 #X connect 4 0 3 0;
 #X connect 4 0 5 0;
-#X connect 4 0 32 1;
+#X connect 4 0 31 1;
 #X connect 7 0 6 0;
 #X connect 7 0 8 0;
-#X connect 7 0 32 2;
+#X connect 7 0 31 2;
 #X connect 10 0 9 0;
 #X connect 10 0 11 0;
 #X connect 13 0 12 0;
@@ -101,11 +86,8 @@
 #X connect 24 5 16 0;
 #X connect 24 6 19 0;
 #X connect 24 7 21 0;
-#X connect 24 8 34 0;
+#X connect 24 8 33 0;
 #X connect 25 0 24 0;
 #X connect 26 0 25 0;
-#X connect 32 0 35 0;
-#X connect 32 1 35 0;
-#X connect 36 0 40 0;
-#X connect 39 0 36 0;
-#X connect 41 0 39 0;
+#X connect 31 0 34 0;
+#X connect 31 1 34 0;
