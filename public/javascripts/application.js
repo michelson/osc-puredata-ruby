@@ -3,8 +3,8 @@ function refreshSwatch() {
 	$.ajax({
 	  type: 'POST',
 	  url: '/arg',
-	  data: { path: "/master",  ip: $('#ip').val() , port: $('#port').val() , num: val  },
-	  success: console.log("success , hex sended"+ val)
+	  data: { path: "/master",  ip: $('#ip').val() , port: $('#port').val() , num: val  } //,
+	 // success: console.log("success , hex sended"+ val)
 	});
 	
 }
@@ -16,9 +16,9 @@ function init_eq(){
 	$("#eq > span").each(function() {
 		// read initial values from markup and remove that
 		var value = 0;
-		console.log ('min' + parseInt($(this).attr("min")));
+	/*	console.log ('min' + parseInt($(this).attr("min")));
 		console.log ('max' + parseInt($(this).attr("max")));
-		console.log ('step' + parseFloat($(this).attr("step")));
+		console.log ('step' + parseFloat($(this).attr("step"))); */
 	
 		$(this).slider({
 			min: parseInt($(this).attr("min")),
@@ -43,7 +43,7 @@ jQuery(document).ready(function(){
 			//destroy table row
 			this.element.parent().parent().remove();
 			// destroy slider
-			console.log("vamos a destruir a #"+this.element.attr('destroy'));
+		//	console.log("vamos a destruir a #"+this.element.attr('destroy'));
 			$("#"+this.element.attr('destroy')).remove();
 			return false;
 		}
@@ -74,42 +74,41 @@ jQuery(document).ready(function(){
 
 	/* MODAL FORM */
 	$(function() {
-	
-	var name = $("#name"),
-		channel = $("#channel"),
-		min = $("#min"),
-		max = $("#max"),
-		step = $("#step"),
-		allFields = $([]).add(channel).add(min).add(max),
-		tips = $("#validateTips");
+		var name = $("#name"),
+			channel = $("#channel"),
+			min = $("#min"),
+			max = $("#max"),
+			step = $("#step"),
+			allFields = $([]).add(channel).add(min).add(max),
+			tips = $("#validateTips");
 
-	function updateTips(t) {
-		tips.text(t).effect("highlight",{},1500);
-	}
-
-	function checkLength(o,n,min,max) {
-
-		if ( o.val().length > max || o.val().length < min ) {
-			o.addClass('ui-state-error');
-			updateTips("Length of " + n + " must be between "+min+" and "+max+".");
-			return false;
-		} else {
-			return true;
+		function updateTips(t) {
+			tips.text(t).effect("highlight",{},1500);
 		}
 
-	}
+		function checkLength(o,n,min,max) {
 
-	function checkRegexp(o,regexp,n) {
+			if ( o.val().length > max || o.val().length < min ) {
+				o.addClass('ui-state-error');
+				updateTips("Length of " + n + " must be between "+min+" and "+max+".");
+				return false;
+			} else {
+				return true;
+			}
 
-		if ( !( regexp.test( o.val() ) ) ) {
-			o.addClass('ui-state-error');
-			updateTips(n);
-			return false;
-		} else {
-			return true;
 		}
 
-	}
+		function checkRegexp(o,regexp,n) {
+
+			if ( !( regexp.test( o.val() ) ) ) {
+				o.addClass('ui-state-error');
+				updateTips(n);
+				return false;
+			} else {
+				return true;
+			}
+
+		}
 	
 	$("#dialog").dialog({
 		bgiframe: true,
@@ -144,13 +143,13 @@ jQuery(document).ready(function(){
 							$('#users-contain').show();
 				}
 			},
-		Cancel: function() {
-				$(this).dialog('close');
-			 }
-		},
-		close: function() {
-			allFields.val('').removeClass('ui-state-error');
-		}
+			Cancel: function() {
+					$(this).dialog('close');
+				 }
+			},
+			close: function() {
+				allFields.val('').removeClass('ui-state-error');
+			}
 	});
 	
 	jQuery(function($) {
