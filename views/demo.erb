@@ -3,32 +3,40 @@
 		#eq span {
 			height:120px; float:left; margin:15px
 		}
+		#bt button {
+			margin:2px
+		}
 	</style>
 <div class="demo span-16">
-<p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
-<span class="ui-icon ui-icon-volume-on" style="float:left; margin:-2px 5px 0 0;"></span>
-Master volume
-</p>
-<div id="master" style="width:260px; margin:15px;"></div>
-<p class="ui-state-default ui-corner-all" style="padding:4px;margin-top:4em;">
-<span class="ui-icon ui-icon-signal" style="float:left; margin:-2px 5px 0 0;"></span>
-Graphic EQ
-</p>
-<button id="create-slider" class="ui-button ui-state-default ui-corner-all append-bottom">Create slider</button>
+  <p class="ui-state-default ui-corner-all ui-helper-clearfix">
+    <span class="ui-icon ui-icon-volume-on" style="float:left; margin:2px 5px 0px 4px;"></span>
+    Master volume
+  </p>
+  <div id="master" style="width:260px; margin:15px;"></div>
+  <p class="ui-state-default ui-corner-all">
+    <span class="ui-icon ui-icon-signal" style="float:left; margin:2px 5px 0px 4px;"></span>
+    Buttons
+  </p>
 
-<button id="create-btn" class="ui-button ui-state-default ui-corner-all append-bottom">Create Button</button>
 
-<div id="bt">
-	<!-->
-	<span path="eq-1" min="0" max="127">88</span>
-	-->
-</div>
-<div id="eq">
-	<!-->
-	<span path="eq-1" min="0" max="127">88</span>
-	-->
-</div>
-<hr/>
+  <div id="bt">
+  	<!-->
+  	<span path="eq-1" min="0" max="127">88</span>
+  	-->
+  </div>
+  <hr/>
+  
+  <p class="ui-state-default ui-corner-all">
+    <span class="ui-icon ui-icon-signal" style="float:left; margin:2px 5px 0px 4px;"></span>
+    Graphic EQ
+  </p>
+  
+  <div id="eq">
+  	<!-->
+  	<span path="eq-1" min="0" max="127">88</span>
+  	-->
+  </div>
+  <hr/>
 </div><!-- End demo -->
 
 
@@ -72,6 +80,21 @@ Graphic EQ
 				<th>Min</th>
 				<th>Max</th>
 				<th>Step</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+			</tr>
+		</tbody>
+	</table>
+	
+	<h3>Existing buttons:</h3>
+	<table id="buttons" class="ui-widget ui-widget-content">
+		<thead>
+			<tr class="ui-widget-header ">
+				<th>Channel</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -85,7 +108,7 @@ Graphic EQ
 
 <div class="demo-description">
 		<p>Use a modal dialog to create your sliders.  options are: <code>channel</code> for osc path, <code>max</code> to set the max slider value, <code>min</code> to set the min slider value, and <code>step</code> the size or amount of each interval or step the slider takes between min and max. to set the full specified value range of the slider (max - min) needs to be evenly divisible by the step.
-			</p>
+		</p>
 </div><!-- End demo-description -->
 
 

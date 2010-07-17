@@ -66,7 +66,7 @@ jQuery(document).ready(function(){
 			//destroy table row
 			this.element.parent().parent().remove();
 			// destroy slider
-		//	console.log("vamos a destruir a #"+this.element.attr('destroy'));
+			//	console.log("vamos a destruir a #"+this.element.attr('destroy'));
 			$("#"+this.element.attr('destroy')).remove();
 			return false;
 		}
@@ -102,16 +102,7 @@ jQuery(document).ready(function(){
 			$(this.element).removeClass("ui-state-active");
 		}
 		
-	})
-	
-	Toggleize = $.klass({ 
-		initialize: function(){
-		
-		},
-		
-	})
-	
-	
+	})	
 	
 	InitSliders = $.klass({
 		initialize: function(){
@@ -140,19 +131,18 @@ jQuery(document).ready(function(){
 			//console.log("se creo uno!!");			
 				$(this.element).toggle(function() {
 				  //console.log('First handler for .toggle() called.' + $(this).attr("path"));
-					$(this).addClass("ui-state-hover"); 
+					$(this).addClass("ui-state-active"); 
 					$.ajax({type: 'POST', url: '/arg',
 				   		data: { path: "/"+$(this).attr("path"), ip: $('#ip').val() , port: $('#port').val() , num: 1 },
 					})
 				}, function() {
-					$(this).removeClass("ui-state-hover"); 
+					$(this).removeClass("ui-state-active"); 
 					$.ajax({type: 'POST', url: '/arg',
 					   data: { path: "/"+$(this).attr("path"), ip: $('#ip').val() , port: $('#port').val() , num: 0 },
 					})
 				  //console.log('Second handler for .toggle() called.'+  $(this).attr("path"));
 				});
 		},
-	
 		onclick: function() {
 			return false;
 		}
@@ -246,12 +236,12 @@ jQuery(document).ready(function(){
 			
 					if (bValid) {
 						//console.log(btnchannel.val())
-						$('#sliders tbody').append('<tr">' +
+						$('#buttons tbody').append('<tr">' +
 							'<td>' + btnchannel.val() + '</td>' + 
 							'<td>' + '<a href="#" class="destroy" destroy="'+btnchannel.val()+'">destroy!</a>' + '</td>' +
 							'</tr>');
 							
-						$('#bt').append("<button path="+btnchannel.val()+" class='ui-button ui-state-default ui-corner-all append-bottom'>"+btnchannel.val()+"</button>");
+						$('#bt').append("<button path="+btnchannel.val()+" id="+btnchannel.val()+" class='ui-button ui-state-default ui-corner-all append-bottom'>"+btnchannel.val()+"</button>");
 						$(this).dialog('close');
 						// display table
 						$('#users-contain').show();
@@ -274,8 +264,7 @@ jQuery(document).ready(function(){
 	    $('#create-btn').attach(OpenDialog, $('#button-dialog') )
 		$("#eq span").attach(InitSliders);
 		$('#bt button.ui-button').attach(InitButtons);
-		$('#create-slider, #create-btn, #b button.ui-button').attach(BasicButton)
-		$('#bt button.ui-button').attach(Toggleize)
+		$('#create-slider, #create-btn, #bt button.ui-button').attach(BasicButton)
 	});
 
 /*end*/
