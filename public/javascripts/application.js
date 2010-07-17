@@ -75,8 +75,8 @@ jQuery(document).ready(function(){
 	OpenDialog = $.klass({
 		initialize: function(dialog){
 			element = this.element 
-			 this.dialog = dialog 
-				console.log(this.dialog)
+			this.dialog = dialog 
+			//console.log(this.dialog)
 		},
 		onclick: function(){
 			$(this.dialog).dialog('open');
@@ -106,10 +106,10 @@ jQuery(document).ready(function(){
 	
 	InitSliders = $.klass({
 		initialize: function(){
-			console.log("se creo uno!!")
+			//console.log("se creo uno!!")
 			var value = 0;
 			
-			console.log('se creo uno con'  +" " + $(this.element).attr("min") +" " + $(this.element).attr("max")  +" " + $(this.element).attr("step"))
+			//console.log('se creo uno con'  +" " + $(this.element).attr("min") +" " + $(this.element).attr("max")  +" " + $(this.element).attr("step"))
 			$(this.element).slider({
 				min: parseInt($(this.element).attr("min")),
 				max: parseInt($(this.element).attr("max")),
