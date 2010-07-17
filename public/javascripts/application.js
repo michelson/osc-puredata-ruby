@@ -117,7 +117,7 @@ jQuery(document).ready(function(){
 				// change solo al soltar la wea, "slide" al desplazar (eso es mas intensivo)
 				change: function(event, ui) {
 					$.ajax({type: 'POST', url: '/arg',
-					  data: { path: "/"+$(this.element).attr("path"), ip: $('#ip').val() , port: $('#port').val() , num: ui.value },
+					  data: { path: "/"+$(this).attr("path"), ip: $('#ip').val() , port: $('#port').val() , num: ui.value },
 					})
 				}
 			 })	
