@@ -11,6 +11,8 @@ require 'erb'
 require 'eventmachine'
 require 'osc-ruby'
 require 'osc-ruby/em_server'
+#gem 'sinatra', '0.9.6'
+
 require 'sinatra'
 # @server = OSC::EMServer.new( 3002 )
 

@@ -1,8 +1,6 @@
 require 'initializer'
 require 'helpers'
 
-
-
 # Quick test
 get '/' do
   "Congradulations!
@@ -13,20 +11,6 @@ end
    ENV.inspect
  end
  
- get '/receive' do 
-   @server = OSC::EMServer.new( 3003 )
-   @client = OSC::Client.new( 'localhost', 3002 )
-
-   @server.add_method '/test' do | message |
-     puts message.inspect
-   end
-
-   Thread.new do
-     @server.run
-   end
-   
- end
-
  get '/send' do 
    protected!
    erb :send
@@ -39,13 +23,10 @@ end
    port = params[:port] || 3002
    ip = params[:ip] || '190.164.164.193'
    path = params[:path] || '/v'
-   
    @client = OSC::Client.new( ip, port )
    @client.send( OSC::Message.new( path , num.to_f  ))
-   
   # session[:message] = "<div class='block'> #{num} sended!</div>"
   # redirect '/send'
-   
  end
  
  get '/demo' do 

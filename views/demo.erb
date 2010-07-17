@@ -16,20 +16,23 @@ Graphic EQ
 </p>
 <button id="create-slider" class="ui-button ui-state-default ui-corner-all append-bottom">Create slider</button>
 
+<button id="create-btn" class="ui-button ui-state-default ui-corner-all append-bottom">Create Button</button>
+
+<div id="bt">
+	<!-->
+	<span path="eq-1" min="0" max="127">88</span>
+	-->
+</div>
 <div id="eq">
-	<!--><span path="eq-1" min="0" max="127">88</span>
-	<span path="eq-2" min="0" max="127">77</span>
-	<span path="eq-3" min="0" max="1">55</span>
-	<span path="eq-4" min="0" max="1">33</span>
-	<span path="eq-5" min="0" max="1">40</span>
-	<span path="eq-6" min="0" max="1">45</span>
-	<span path="eq-7" min="0" max="1">70</span>-->
+	<!-->
+	<span path="eq-1" min="0" max="127">88</span>
+	-->
 </div>
 <hr/>
 </div><!-- End demo -->
 
 
-
+<!--> Slider DIALOG -->
 <div id="dialog" title="Create new slider">
 	<p id="validateTips">All form fields are required.</p>
 	<form>
@@ -45,6 +48,19 @@ Graphic EQ
 	</fieldset>
 	</form>
 </div>
+<!-- End dialog -->
+
+<!--> Button DIALOG -->
+<div id="button-dialog" title="Create new slider">
+	<p id="validateTips">All form fields are required.</p>
+	<form>
+	<fieldset>
+		<label for="channel">Channel</label><br/>
+		<input type="text" name="channel" id="btn-channel" class="text ui-widget-content ui-corner-all" /><br/>
+	</fieldset>
+	</form>
+</div>
+<!-- End dialog -->
 
 
 <div id="users-contain" class="ui-widget span-16" style="display:none">
@@ -64,6 +80,8 @@ Graphic EQ
 		</tbody>
 	</table>
 </div>
+
+
 
 <div class="demo-description">
 		<p>Use a modal dialog to create your sliders.  options are: <code>channel</code> for osc path, <code>max</code> to set the max slider value, <code>min</code> to set the min slider value, and <code>step</code> the size or amount of each interval or step the slider takes between min and max. to set the full specified value range of the slider (max - min) needs to be evenly divisible by the step.
