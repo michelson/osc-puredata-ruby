@@ -11,7 +11,7 @@ function refreshSwatch() {
 
 function init_eq(){
 	// setup graphic EQ
-/*	$("#eq > span").each(function() {
+      /*	$("#eq > span").each(function() {
 		var value = 0;
 		$(this).slider({
 			min: parseInt($(this).attr("min")),
@@ -23,7 +23,7 @@ function init_eq(){
 			})
 			}
 		})
-	}); */
+      }); */
 }
 
 
@@ -102,6 +102,12 @@ jQuery(document).ready(function(){
 			$(this.element).removeClass("ui-state-active");
 		}
 		
+	})
+	
+	Toggleize = $.klass({ 
+		initialize: function(){
+		
+		},
 		
 	})
 	
@@ -131,14 +137,24 @@ jQuery(document).ready(function(){
 
 	InitButtons = $.klass({
 		initialize: function(){
-			console.log("se creo uno!!")
-			var value = 0;
+			//console.log("se creo uno!!");			
+				$(this.element).toggle(function() {
+				  //console.log('First handler for .toggle() called.' + $(this).attr("path"));
+					$(this).addClass("ui-state-hover"); 
+					$.ajax({type: 'POST', url: '/arg',
+				   		data: { path: "/"+$(this).attr("path"), ip: $('#ip').val() , port: $('#port').val() , num: 1 },
+					})
+				}, function() {
+					$(this).removeClass("ui-state-hover"); 
+					$.ajax({type: 'POST', url: '/arg',
+					   data: { path: "/"+$(this).attr("path"), ip: $('#ip').val() , port: $('#port').val() , num: 0 },
+					})
+				  //console.log('Second handler for .toggle() called.'+  $(this).attr("path"));
+				});
 		},
+	
 		onclick: function() {
-			$.ajax({type: 'POST', url: '/arg',
-			   data: { path: "/"+$(this.element).attr("href"), ip: $('#ip').val() , port: $('#port').val() , num: 1 },
-			})
-		return false;
+			return false;
 		}
     })
 
@@ -235,12 +251,7 @@ jQuery(document).ready(function(){
 							'<td>' + '<a href="#" class="destroy" destroy="'+btnchannel.val()+'">destroy!</a>' + '</td>' +
 							'</tr>');
 							
-							
-					
-						//$('#eq').append("<input type='checkbox' class='check' path='"+btnchannel.val()+"' /><label for='check'>"+btnchannel.val()+"</label>");
-						$('#bt').append("<a href="+btnchannel.val()+" class='ui-button ui-state-default ui-corner-all append-bottom'>"+btnchannel.val()+"</a>");
-						
-						//$('#bt a').button();
+						$('#bt').append("<button path="+btnchannel.val()+" class='ui-button ui-state-default ui-corner-all append-bottom'>"+btnchannel.val()+"</button>");
 						$(this).dialog('close');
 						// display table
 						$('#users-contain').show();
@@ -262,8 +273,9 @@ jQuery(document).ready(function(){
 		$('#create-slider').attach(OpenDialog, $('#dialog') )
 	    $('#create-btn').attach(OpenDialog, $('#button-dialog') )
 		$("#eq span").attach(InitSliders);
-		$('#bt a.ui-button').attach(InitButtons);
-		$('#create-slider, #create-btn, #bt a.ui-button').attach(BasicButton)
+		$('#bt button.ui-button').attach(InitButtons);
+		$('#create-slider, #create-btn, #b button.ui-button').attach(BasicButton)
+		$('#bt button.ui-button').attach(Toggleize)
 	});
 
 /*end*/
